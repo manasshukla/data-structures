@@ -61,6 +61,7 @@ public class LinkedList {
         current.next = node;
     }
 
+
     class Node {
         int value;
         Node next;
