@@ -5,7 +5,7 @@ import java.util.Scanner;
 
 /**
  * Delete duplicate nodes from a sorted Link list
- * You're given the pointer to the head node of a sorted linked list, where the data in the nodes is in ascending order.
+ * Given the pointer to the head node of a sorted linked list, where the data in the nodes is in ascending order.
  * Delete as few nodes as possible so that the list does not contain any value more than once.
  * The given head pointer may be null indicating that the list is empty.
  *

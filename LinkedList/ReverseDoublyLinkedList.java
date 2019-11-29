@@ -6,7 +6,7 @@ import java.util.Scanner;
 
 /**
  * Reverse a doubly linked list
- *You’re given the pointer to the head node of a doubly linked list.
+ * Given the pointer to the head node of a doubly linked list.
  * Reverse the order of the nodes in the list.
  * The head node might be NULL to indicate that the list is empty.
  * Change the next and prev pointers of all the nodes so that the direction of the list is reversed.
