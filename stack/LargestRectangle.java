@@ -1,27 +1,61 @@
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
 import java.util.Scanner;
-import java.util.concurrent.atomic.AtomicLong;
+import java.util.Stack;
 
+
+/**
+ * Given bars of a unit width, calculate the largest rectangle in a histogram
+ *
+ * Sample Input
+ * 5
+ * 1 2 3 4 5
+ *
+ * Sample Output
+ * 9
+ *
+ */
 public class LargestRectangle {
 
     // Complete the largestRectangle function below.
     static long largestRectangle(int[] h) {
-        List<Integer> nums = new ArrayList<>();
-        Arrays.stream(h).forEach(i -> nums.add(i));
+        Stack<Integer> s1 = new Stack<>();
+        int max_area = 0, i=0;
 
-        AtomicLong max = new AtomicLong();
-
-        for (int i : h) {
-            
+        while(i < h.length){
+            if(s1.empty() || h[s1.peek()] < h[i]){
+                s1.push(i);
+                i++;
+            }else{
+                int area = 0;
+                int currentHeight = h[s1.pop()];
+                if(s1.empty()){
+                    area = currentHeight*i;
+                }else{
+                    area = currentHeight*(i-s1.peek()-1);
+                }
+                if(max_area < area) {
+                    max_area = area;
+                }
+            }
         }
 
-        return max.longValue();
+        while(!s1.empty()){
+            int area = 0;
+            int currentHeight = h[s1.pop()];
+            if(s1.empty()){
+                area = currentHeight*i;
+            }else{
+                area = currentHeight*(i-s1.peek()-1);
+            }
+            if(max_area < area) {
+                max_area = area;
+            }
+        }
+
+        return max_area;
+
     }
 
     private static final Scanner scanner = new Scanner(System.in);
